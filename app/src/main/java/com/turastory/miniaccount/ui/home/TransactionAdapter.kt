@@ -1,11 +1,10 @@
 package com.turastory.miniaccount.ui.home
 
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import com.turastory.miniaccount.R
 import com.turastory.miniaccount.entity.Transaction
 import com.turastory.miniaccount.le
@@ -13,8 +12,8 @@ import kotlinx.android.synthetic.main.item_transaction.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TransactionAdapter(private val view: RecyclerView) :
-    RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionAdapter(private val view: androidx.recyclerview.widget.RecyclerView) :
+    androidx.recyclerview.widget.RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
     // List of transactions - always sorted with date in descending order..
     private val transactions = ArrayList<Transaction>()
@@ -64,7 +63,7 @@ class TransactionAdapter(private val view: RecyclerView) :
         return transactions.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         fun bind(transaction: Transaction) {
             with(itemView) {
                 nameText.text = transaction.name

@@ -3,8 +3,7 @@ package com.turastory.miniaccount.ui.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import com.turastory.miniaccount.R
 import com.turastory.miniaccount.TransactionListUseCase
 import com.turastory.miniaccount.toast
@@ -23,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerView.apply {
             adapter = transactionAdapter
-            layoutManager = LinearLayoutManager(this@HomeActivity)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this@HomeActivity)
             setHasFixedSize(true)
         }
 

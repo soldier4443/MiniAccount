@@ -1,10 +1,10 @@
 package com.turastory.miniaccount
 
 import android.content.Context
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 
 fun le(message: String) {
     Log.e("asdf", message)
