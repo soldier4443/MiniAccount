@@ -118,14 +118,6 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <Button
-      android:id="@+id/completeButton"
-      android:layout_width="138dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:backgroundTint="@color/colorPrimary"
-      android:text="완료" />
-
   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

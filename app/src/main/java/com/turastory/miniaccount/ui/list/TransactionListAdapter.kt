@@ -1,4 +1,4 @@
-package com.turastory.miniaccount.ui.home
+package com.turastory.miniaccount.ui.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.item_transaction.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TransactionAdapter(private val view: RecyclerView) :
-    RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionListAdapter(private val view: RecyclerView) :
+    RecyclerView.Adapter<TransactionListAdapter.ViewHolder>() {
 
     // List of transactions - always sorted with date in descending order..
     private val transactions = ArrayList<Transaction>()
