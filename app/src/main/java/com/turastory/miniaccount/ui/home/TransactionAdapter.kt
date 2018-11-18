@@ -3,17 +3,18 @@ package com.turastory.miniaccount.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.turastory.miniaccount.R
+import com.turastory.miniaccount.colorOf
 import com.turastory.miniaccount.entity.Transaction
+import com.turastory.miniaccount.entity.Type
 import com.turastory.miniaccount.le
 import kotlinx.android.synthetic.main.item_transaction.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TransactionAdapter(private val view: androidx.recyclerview.widget.RecyclerView) :
-    androidx.recyclerview.widget.RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionAdapter(private val view: RecyclerView) :
+    RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
     // List of transactions - always sorted with date in descending order..
     private val transactions = ArrayList<Transaction>()
@@ -63,31 +64,30 @@ class TransactionAdapter(private val view: androidx.recyclerview.widget.Recycler
         return transactions.size
     }
 
-    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
         fun bind(transaction: Transaction) {
             with(itemView) {
                 nameText.text = transaction.name
                 timeText.text = transaction.date.formatDate()
-                setAmountText(transaction.amount)
+                setAmountText(transaction)
+            }
+        }
+
+        private fun View.setAmountText(transaction: Transaction) {
+            when {
+                transaction.type == Type.INCOME -> {
+                    amountText.text = "+${transaction.amount}"
+                    amountText.setTextColor(context.colorOf(R.color.colorBlue))
+                }
+                transaction.type == Type.OUTCOME -> {
+                    amountText.text = "-${transaction.amount}"
+                    amountText.setTextColor(context.colorOf(R.color.colorRed))
+                }
             }
         }
 
         private fun Date.formatDate() =
             SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(this)
-
-        private fun View.setAmountText(amount: Int) {
-            amountText.text = "$amount"
-            when {
-                amount < 0 ->
-                    amountText.setTextColor(colorOf(R.color.colorRed))
-                amount == 0 ->
-                    amountText.setTextColor(colorOf(R.color.colorText))
-                else ->
-                    amountText.setTextColor(colorOf(R.color.colorBlue))
-            }
-        }
-
-        private fun colorOf(@ColorRes resId: Int): Int =
-            ContextCompat.getColor(itemView.context, resId)
     }
 }

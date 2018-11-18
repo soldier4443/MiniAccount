@@ -3,9 +3,11 @@ package com.turastory.miniaccount.ui.addtransaction
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.chip.Chip
 import com.turastory.miniaccount.R
 import com.turastory.miniaccount.TransactionListUseCase
 import com.turastory.miniaccount.entity.Transaction
+import com.turastory.miniaccount.entity.Type
 import com.turastory.miniaccount.toast
 import kotlinx.android.synthetic.main.activity_add_transaction.*
 import org.koin.android.ext.android.inject
@@ -21,6 +23,7 @@ class AddTransactionActivity : AppCompatActivity() {
     }
 
     private var date: Date = Date()
+    private var type: Type = Type.OUTCOME
 
     private val useCase: TransactionListUseCase by inject()
 
@@ -30,6 +33,8 @@ class AddTransactionActivity : AppCompatActivity() {
 
         updateDateText()
         setupDateButtons()
+
+        setupTypeChips()
 
         setupCompleteButton()
     }
@@ -47,6 +52,23 @@ class AddTransactionActivity : AppCompatActivity() {
         datePlusButton.setOnClickListener {
             date += 1
             updateDateText()
+        }
+    }
+
+    private fun setupTypeChips() {
+        typeChipGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.outcomeTypeChip -> this.type = Type.OUTCOME
+                R.id.incomeTypeChip -> this.type = Type.INCOME
+                Chip.NO_ID -> {
+                    // Prevent no selection
+                    if (this.type == Type.OUTCOME) {
+                        typeChipGroup.check(R.id.outcomeTypeChip)
+                    } else if (this.type == Type.INCOME) {
+                        typeChipGroup.check(R.id.incomeTypeChip)
+                    }
+                }
+            }
         }
     }
 
@@ -73,7 +95,8 @@ class AddTransactionActivity : AppCompatActivity() {
                 Transaction(
                     name = name,
                     amount = amountText.toInt(),
-                    date = date
+                    date = date,
+                    type = type
                 )
             )
 

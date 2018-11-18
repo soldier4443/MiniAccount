@@ -1,6 +1,7 @@
 package com.turastory.miniaccount
 
 import com.turastory.miniaccount.entity.Transaction
+import com.turastory.miniaccount.entity.Type
 import java.util.*
 
 private val words = arrayOf(
@@ -16,8 +17,13 @@ fun provideRandomTransaction(): Transaction {
     return Transaction(
         name = words.randomItem(),
         amount = (100..100000).random(),
-        date = randomDate(60)
+        date = randomDate(60),
+        type = randomType()
     )
+}
+
+fun randomType(): Type {
+    return if (Random().nextInt(2) == 0) Type.INCOME else Type.OUTCOME
 }
 
 private fun randomDate(dayBefore: Int): Date {

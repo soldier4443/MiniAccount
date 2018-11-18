@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
   <TextView
     android:id="@+id/titleText"
@@ -83,10 +83,46 @@
       android:textSize="16dp"
       tools:text="14000" />
 
+    <com.google.android.material.chip.ChipGroup
+      android:id="@+id/typeChipGroup"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      app:checkedChip="@+id/outcomeTypeChip"
+      app:chipSpacing="8dp"
+      app:singleSelection="true">
+
+      <com.google.android.material.chip.Chip
+        android:id="@+id/outcomeTypeChip"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_transaction_outcome"
+        android:textColor="@color/outcome_chip_text_color"
+        app:chipBackgroundColor="@color/outcome_chip_background_color"
+        app:chipStrokeColor="@color/outcome_chip_stroke_color"
+        app:chipStrokeWidth="1dp"
+        app:rippleColor="@color/outcome_chip_ripple_color" />
+
+      <com.google.android.material.chip.Chip
+        android:id="@+id/incomeTypeChip"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_transaction_income"
+        android:textColor="@color/income_chip_text_color"
+        app:chipBackgroundColor="@color/income_chip_background_color"
+        app:chipStrokeColor="@color/income_chip_stroke_color"
+        app:chipStrokeWidth="1dp"
+        app:rippleColor="@color/income_chip_ripple_color" />
+
+    </com.google.android.material.chip.ChipGroup>
+
     <Button
       android:id="@+id/completeButton"
       android:layout_width="138dp"
       android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
       android:backgroundTint="@color/colorPrimary"
       android:text="완료" />
 

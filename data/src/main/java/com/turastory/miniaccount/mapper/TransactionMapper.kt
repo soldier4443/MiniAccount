@@ -9,7 +9,8 @@ class TransactionMapper : InvertableMapper<Transaction, TransactionModel> {
             from.id,
             from.name,
             from.amount,
-            from.date
+            from.date,
+            from.type
         )
     }
 
@@ -18,7 +19,8 @@ class TransactionMapper : InvertableMapper<Transaction, TransactionModel> {
             to.id,
             to.name,
             to.amount,
-            to.date
+            to.date,
+            to.type
         )
     }
 }

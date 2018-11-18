@@ -9,4 +9,12 @@
     <item name="android:textColor">@color/colorText</item>
   </style>
 
+  <style name="AppTheme.OutcomeChip" parent="Widget.MaterialComponents.Chip.Choice">
+    <item name="colorOnSurface">@color/colorRed</item>
+  </style>
+
+  <style name="AppTheme.IncomeChip" parent="Widget.MaterialComponents.Chip.Choice">
+    <item name="colorOnSurface">@color/colorBlue</item>
+  </style>
+
 </resources>
